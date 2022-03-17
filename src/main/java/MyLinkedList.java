@@ -1,26 +1,26 @@
 import java.util.Arrays;
 
-public class MyLinkedList {
+public class MyLinkedList <T>{
 
-  private Node head;
+  private Node <T> head;
   private int size;
 
-  public void add(int value) {
+  public void add(T value) {
     if (head == null) {
-      this.head = new Node(value);
+      this.head = new Node<>(value);
     } else {
-      Node temp = head;
+      Node<T> temp = head;
       while (temp.getNext() != null) {
         temp = temp.getNext();
       }
-      temp.setNext(new Node(value));
+      temp.setNext(new Node<>(value));
     }
     size++;
   }
 
-  public int get(int index) {
+  public T get(int index) {
     int currentIndex = 0;
-    Node temp = head;
+    Node<T> temp = head;
     while (temp != null) {
       if (currentIndex == index) {
         return temp.getValue();
@@ -39,7 +39,7 @@ public class MyLinkedList {
       return;
     }
     int currentIndex = 0;
-    Node temp = head;
+    Node <T> temp = head;
     while (temp != null) {
       if ((currentIndex + 1) == index) {
         temp.setNext(temp.getNext().getNext());
@@ -52,9 +52,9 @@ public class MyLinkedList {
     }
   }
 
-  public void update(int index, int value){
+  public void update(int index, T value){
     int currentIndex = 0;
-    Node temp = head;
+    Node <T> temp = head;
     while (temp != null) {
       if (currentIndex == index) {
         temp.setValue(value);
@@ -67,9 +67,9 @@ public class MyLinkedList {
   }
 
   public String toString() {
-    int[] result = new int[size];
+    Object [] result = new Object[size];
     int index = 0;
-    Node temp = head;
+    Node<T> temp = head;
     while (temp != null) {
       result[index++] = temp.getValue();
       temp = temp.getNext();
@@ -77,28 +77,28 @@ public class MyLinkedList {
     return Arrays.toString(result);
   }
 
-  static class Node {
+  static class Node<T> {
 
-    private int value;
-    private Node next;
+    private T value;
+    private Node <T> next;
 
-    public Node(int value) {
+    public Node(T value) {
       this.value = value;
     }
 
-    public int getValue() {
+    public T getValue() {
       return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(T value) {
       this.value = value;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
       return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
       this.next = next;
     }
   }
