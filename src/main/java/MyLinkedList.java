@@ -66,6 +66,20 @@ public class MyLinkedList <T>{
     }
   }
 
+  public boolean isEmpty(){
+    return length() == 0;
+  }
+
+  public int length() {
+    int length = 0;
+    Node<T> current = head;
+    while(current != null){
+      length ++;
+      current = current.next;
+    }
+    return length;
+  }
+
   public String toString() {
     Object [] result = new Object[size];
     int index = 0;
