@@ -50,6 +50,7 @@ public class MyLinkedList <T>{
         currentIndex++;
       }
     }
+    throw new IllegalArgumentException();
   }
 
   public void update(int index, T value){
